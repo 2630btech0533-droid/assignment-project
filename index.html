@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Book Exchange</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f7fb;
+            color: #263238;
+        }
+
+        header {
+            background-color: #263b65;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        nav {
+            background-color: #182846;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ffd166;
+        }
+
+        .welcome {
+            text-align: center;
+            padding: 30px 15px;
+        }
+
+        button {
+            padding: 10px 16px;
+            margin: 8px;
+            border: none;
+            border-radius: 6px;
+            background-color: #ea7d1d;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #e78db8;
+        }
+
+        .books-section {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .book-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .book-card {
+            background-color: white;
+            width: 230px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px #00000015;
+            transition: 0.3s;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .book-card h3 {
+            color: #263b65;
+        }
+
+        .highlight {
+            background-color: #ffe8a3;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #346508;
+            color: white;
+            padding: 15px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1 id="mainHeading">Campus Book Exchange</h1>
+        <p>Share Books, Share Knowledge!</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="browse.html">Browse Books</a>
+        <a href="list.html">List a Book</a>
+    </nav>
+
+    <section class="welcome">
+        <h2>Welcome to Our Campus Book Exchange!</h2>
+
+        <p>
+            Exchange, borrow, or discover books with fellow students.
+            Save money, reuse books, and make learning easier for everyone.
+        </p>
+
+        <button onclick="changeHeading()">
+            Change Main Heading
+        </button>
+
+        <button onclick="toggleBooks()">
+            Show / Hide Featured Books
+        </button>
+    </section>
+
+    <section id="featuredBooks" class="books-section">
+        <h2>Featured Books</h2>
+
+        <div class="book-container">
+
+            <div class="book-card" id="book1">
+                <h3>Let Us C</h3>
+                <p><b>Author:</b> Yashavant Kanetkar</p>
+                <p><b>Category:</b> Programming</p>
+                <button onclick="changeCardColor()">
+                    Change Card Colour
+                </button>
+            </div>
+
+            <div class="book-card">
+                <h3>Atomic Habits</h3>
+                <p><b>Author:</b> James Clear</p>
+                <p><b>Category:</b> Self-Help</p>
+            </div>
+
+            <div class="book-card">
+                <h3>The Alchemist</h3>
+                <p><b>Author:</b> Paulo Coelho</p>
+                <p><b>Category:</b> Fiction</p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Campus Book Exchange | Made for Students</p>
+    </footer>
+
+    <script>
+        function changeHeading() {
+            document.getElementById("mainHeading").textContent =
+                "Welcome to Your Reading Community!";
+        }
+
+        function changeCardColor() {
+            document.getElementById("book1").classList.toggle("highlight");
+        }
+
+        function toggleBooks() {
+            document.getElementById("featuredBooks").classList.toggle("hidden");
+        }
+    </script>
+
+</body>
+</html>
