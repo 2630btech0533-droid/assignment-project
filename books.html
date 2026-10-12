@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Books - Campus Book Exchange</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f7fb;
+            color: #263238;
+        }
+
+        header {
+            background-color: #263b65;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        nav {
+            background-color: #182846;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ffd166;
+        }
+
+        .search-section {
+            text-align: center;
+            padding: 25px;
+        }
+
+        input {
+            padding: 11px;
+            width: 250px;
+            max-width: 80%;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3569a8;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #244a78;
+        }
+
+        .books-section {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .book-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .book-card {
+            background-color: white;
+            width: 220px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px #00000015;
+            transition: 0.3s;
+        }
+
+        .book-card h3 {
+            color: #263b65;
+        }
+
+        .changed {
+            background-color: #d9f7e8;
+            border: 2px solid #229954;
+        }
+
+        .message {
+            color: #187744;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        footer {
+            background-color: #263b65;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Browse Books</h1>
+        <p>Find Your Next Favourite Book on Campus!</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="books.html">Browse Books</a>
+        <a href="list.html">List a Book</a>
+    </nav>
+
+    <!-- Search book by title -->
+    <section class="search-section">
+        <h2>Find a Book by Title</h2>
+
+        <input type="text" id="bookTitle"
+               placeholder="Enter book title">
+
+        <button onclick="showBook()">Show Book</button>
+
+        <p id="displayBook"></p>
+        <p id="titleMessage" class="message"></p>
+    </section>
+
+    <!-- Available books -->
+    <section class="books-section">
+        <h2>Books Available for Exchange</h2>
+
+        <div class="book-container">
+
+            <div class="book-card" id="book1">
+                <h3>Let Us C</h3>
+                <p><b>Author:</b> Yashavant Kanetkar</p>
+                <p><b>Category:</b> Programming</p>
+                <p><b>Condition:</b> Good</p>
+
+                <button onclick="requestBook(this)">
+                    Mark as Requested
+                </button>
+
+                <p class="message"></p>
+            </div>
+
+            <div class="book-card" id="book2">
+                <h3>Atomic Habits</h3>
+                <p><b>Author:</b> James Clear</p>
+                <p><b>Category:</b> Self-Help</p>
+                <p><b>Condition:</b> Excellent</p>
+
+                <button onclick="requestBook(this)">
+                    Mark as Requested
+                </button>
+
+                <p class="message"></p>
+            </div>
+
+            <div class="book-card" id="book3">
+                <h3>The Alchemist</h3>
+                <p><b>Author:</b> Paulo Coelho</p>
+                <p><b>Category:</b> Fiction</p>
+                <p><b>Condition:</b> Very Good</p>
+
+                <button onclick="requestBook(this)">
+                    Mark as Requested
+                </button>
+
+                <p class="message"></p>
+            </div>
+
+            <div class="book-card" id="book4">
+                <h3>Introduction to Algorithms</h3>
+                <p><b>Author:</b> Thomas H. Cormen</p>
+                <p><b>Category:</b> Computer Science</p>
+                <p><b>Condition:</b> Good</p>
+
+                <button onclick="requestBook(this)">
+                    Mark as Requested
+                </button>
+
+                <p class="message"></p>
+            </div>
+
+        </div>
+
+        <br>
+
+        <button onclick="changeCard()">
+            Change First Book Card
+        </button>
+    </section>
+
+    <footer>
+        <p>© 2026 Campus Book Exchange | Made for Students</p>
+    </footer>
+
+    <script>
+        // Mark a book as requested
+        function requestBook(button) {
+            button.textContent = "Request Sent";
+            button.disabled = true;
+
+            let card = button.parentElement;
+            let message = card.querySelector(".message");
+
+            message.textContent =
+                "Your request has been sent successfully!";
+        }
+
+        // Display the entered book title
+        function showBook() {
+            let title =
+                document.getElementById("bookTitle").value.trim();
+
+            let display =
+                document.getElementById("displayBook");
+
+            let message =
+                document.getElementById("titleMessage");
+
+            if (title === "") {
+                display.textContent = "";
+                message.textContent =
+                    "Please enter a book title first.";
+                return;
+            }
+
+            display.textContent = "Book Title: " + title;
+
+            message.textContent =
+                "Book title submitted successfully!";
+        }
+
+        // Change the appearance of the first book card
+        function changeCard() {
+            document.getElementById("book1")
+                .classList.toggle("changed");
+        }
+    </script>
+
+</body>
+</html>
